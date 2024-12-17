@@ -1,0 +1,13 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 12.5px;
+}
+
+body {
+  font-family: Inter, sans-serif;
+  overflow-x: hidden;
+}
