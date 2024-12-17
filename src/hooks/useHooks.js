@@ -4,7 +4,7 @@ export const useCreateProduct = async (product) => {
   product.colours = product.colours.split(",");
   product.size = product.size.split(",");
 
-  const URL = "https://apieauseche-9ajc125k.b4a.run/products/add";
+  const URL = "https://apieauseche-9ajc125k.b4a.run/api/v1/products/add";
   const data = await fetch(URL, {
     method: "POST",
     headers: {
@@ -19,7 +19,7 @@ export const useCreateProduct = async (product) => {
 export const useUpdateProduct = async (product, id) => {
   product._id = id;
 
-  const URL = "https://apieauseche-9ajc125k.b4a.run/products/update";
+  const URL = "https://apieauseche-9ajc125k.b4a.run/api/v1/products/update";
   const data = await fetch(URL, {
     method: "PATCH",
     headers: {
@@ -32,7 +32,7 @@ export const useUpdateProduct = async (product, id) => {
 };
 
 export const useDeleteProduct = async (id) => {
-  const URL = "https://apieauseche-9ajc125k.b4a.run/products/remove";
+  const URL = "https://apieauseche-9ajc125k.b4a.run/api/v1/products/remove";
   const data = await fetch(URL, {
     method: "DELETE",
     headers: {
@@ -45,7 +45,9 @@ export const useDeleteProduct = async (id) => {
 };
 
 export const useFetchAllProducts = async () => {
-  const products = await fetch(`https://apieauseche-9ajc125k.b4a.run/products`);
+  const products = await fetch(
+    `https://apieauseche-9ajc125k.b4a.run/api/v1/products`
+  );
   const res = await products.json();
 
   return res;
@@ -62,14 +64,14 @@ export const fetchProducts = async (gender, type, sort, page) => {
   const q = type || sort || page ? "?" : "";
 
   const products = await fetch(
-    `https://apieauseche-9ajc125k.b4a.run/products${g}${q}${t}${x}${s}${px}${p}`
+    `https://apieauseche-9ajc125k.b4a.run/api/v1/products${g}${q}${t}${x}${s}${px}${p}`
   );
 
   return products;
 };
 
 export const useFetchProductById = async (gender, id) => {
-  const URL = `https://apieauseche-9ajc125k.b4a.run/products/${gender}/${id}`;
+  const URL = `https://apieauseche-9ajc125k.b4a.run/api/v1/products/${gender}/${id}`;
 
   return await fetch(URL);
 };
@@ -78,7 +80,7 @@ export const useFetchProductById = async (gender, id) => {
 // USERS
 
 export const createUser = async (user) => {
-  const URL = `https://apieauseche-9ajc125k.b4a.run/users/signup`;
+  const URL = `https://apieauseche-9ajc125k.b4a.run/api/v1/users/signup`;
   const data = await fetch(URL, {
     method: "POST",
     headers: {
@@ -91,7 +93,7 @@ export const createUser = async (user) => {
 };
 
 export const authUser = async (user) => {
-  const URL = `https://apieauseche-9ajc125k.b4a.run/users/login`;
+  const URL = `https://apieauseche-9ajc125k.b4a.run/api/v1/users/login`;
   const data = await fetch(URL, {
     method: "POST",
     headers: {
@@ -108,7 +110,7 @@ export const authUser = async (user) => {
 
 export const useFetchOrders = async () => {
   const token = localStorage.getItem("jwt");
-  const URL = `https://apieauseche-9ajc125k.b4a.run/orders`;
+  const URL = `https://apieauseche-9ajc125k.b4a.run/api/v1/orders`;
   const data = await fetch(URL, {
     method: "GET",
     headers: {
@@ -122,7 +124,7 @@ export const useFetchOrders = async () => {
 
 export const useFetchOrdersById = async (id) => {
   const token = localStorage.getItem("jwt");
-  const URL = `https://apieauseche-9ajc125k.b4a.run/orders/${id}`;
+  const URL = `https://apieauseche-9ajc125k.b4a.run/api/v1/orders/${id}`;
   const data = await fetch(URL, {
     method: "GET",
     headers: {
@@ -136,7 +138,7 @@ export const useFetchOrdersById = async (id) => {
 
 export const useCreateOrder = async (order) => {
   const token = localStorage.getItem("jwt");
-  const URL = `https://apieauseche-9ajc125k.b4a.run/orders/add`;
+  const URL = `https://apieauseche-9ajc125k.b4a.run/api/v1/orders/add`;
   const data = await fetch(URL, {
     method: "POST",
     headers: {
@@ -150,7 +152,7 @@ export const useCreateOrder = async (order) => {
 };
 
 export const useUpdateStatus = async (id, status) => {
-  const URL = `https://apieauseche-9ajc125k.b4a.run/orders/order/${id}`;
+  const URL = `https://apieauseche-9ajc125k.b4a.run/api/v1/orders/order/${id}`;
   const data = await fetch(URL, {
     method: "POST",
     headers: {
@@ -168,7 +170,7 @@ export const useUpdateStatus = async (id, status) => {
 // Reviews
 
 export const getAllReviews = async () => {
-  const URL = `https://apieauseche-9ajc125k.b4a.run/reviews`;
+  const URL = `https://apieauseche-9ajc125k.b4a.run/api/v1/reviews`;
   const data = await fetch(URL);
   const res = await data.json();
 
@@ -176,7 +178,7 @@ export const getAllReviews = async () => {
 };
 
 export const getReviewById = async (id) => {
-  const URL = `https://apieauseche-9ajc125k.b4a.run/reviews/${id}`;
+  const URL = `https://apieauseche-9ajc125k.b4a.run/api/v1/reviews/${id}`;
   const data = await fetch(URL);
   const res = await data.json();
 
