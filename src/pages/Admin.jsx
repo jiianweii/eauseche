@@ -13,7 +13,6 @@ export default function Admin() {
       localStorage.clear();
       navigate("/login");
     }
-    if (!isAdmin) navigate(-1);
   }, [isLoggedOut, isAdmin]);
 
   return <Dashboard setIsLoggedOut={setIsLoggedOut} Outlet={Outlet} />;
