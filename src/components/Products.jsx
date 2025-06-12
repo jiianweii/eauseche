@@ -20,7 +20,7 @@ export default function Products({ products, isLoading }) {
 
   return (
     <StyledProductListing>
-      {products.map((product, key) => (
+      {products?.map((product, key) => (
         <Product key={key} product={product} />
       ))}
     </StyledProductListing>
